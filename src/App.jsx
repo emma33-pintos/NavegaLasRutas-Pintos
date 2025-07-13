@@ -1,14 +1,19 @@
 import React from "react";
-import NavBar from "./components/NavBar.jsx";
-import ItemListContainer from "./components/ItemListContainer.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import ItemListContainer from "./components/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
-function App() {
+export default function App() {
   return (
-    <>
-    <NavBar />
-    <ItemListContainer mensaje="Bienvenidx a nuestro espacio de Apoyo Emocional!" />
-    </>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/category/:id" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
+        <Route path="*" element={<h2>404 - Página no encontrada</h2>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
