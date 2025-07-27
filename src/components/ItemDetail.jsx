@@ -1,8 +1,12 @@
 import React from "react";
 import ItemCount from "./ItemCount";
+import { useCart } from "../context/CartContext";
 
-export default function ItemDetail({ title, price, image, description }) {
+export default function ItemDetail({ id, title, price, image, description }) {
+  const { addToCart } = useCart();
+
   const handleAdd = (cantidad) => {
+    addToCart({ id, title, price, image }, cantidad);
     alert(`Agregado ${cantidad} al carrito`);
   };
 

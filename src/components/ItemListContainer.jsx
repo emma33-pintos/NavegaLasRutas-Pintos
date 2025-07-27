@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
-import { getProducts } from "../data/products"; 
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase";
 
 export default function ItemListContainer({ greeting }) {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
-    getProducts(id).then(setItems);
+    setLoading(true);
+    const productsRef = collection(db, "productos");
+    const q = id ? query(productsRef, where("category", "==", id)) : productsRef;
+    getDocs(q)
+      .then(snapshot => {
+        const products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setItems(products);
+      })
+      .finally(() => setLoading(false));
   }, [id]);
+
+  if (loading) return <p>Cargando productos...</p>;
 
   return (
     <section className="bienvenidx">
