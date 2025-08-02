@@ -5,11 +5,15 @@ export default function ItemCount({ stock = 10, initial = 1, onAdd }) {
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <button onClick={() => setCount(count > 1 ? count - 1 : 1)}>-</button>
+      <button onClick={() => setCount(count > 1 ? count - 1 : 1)} disabled={stock === 0}>-</button>
       <span style={{ margin: "0 10px" }}>{count}</span>
-      <button onClick={() => setCount(count < stock ? count + 1 : stock)}>+</button>
-      <button style={{ marginLeft: "10px" }} onClick={() => onAdd(count)}>
-        Agregar al carrito
+      <button onClick={() => setCount(count < stock ? count + 1 : stock)} disabled={stock === 0}>+</button>
+      <button
+        style={{ marginLeft: "10px" }}
+        onClick={() => onAdd(count)}
+        disabled={stock === 0}
+      >
+        {stock === 0 ? "Sin stock" : "Agregar al carrito"}
       </button>
     </div>
   );

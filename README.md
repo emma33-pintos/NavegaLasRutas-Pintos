@@ -1,12 +1,32 @@
-# React + Vite
+# Tienda de Libros Motivacionales
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+E-commerce SPA desarrollada en React, con carrito de compras y conexión a Firebase Firestore.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Catálogo de productos por categoría
+- Vista de detalle de cada producto
+- Carrito de compras con contexto global
+- Checkout y registro de orden en Firestore
+- Mensajes condicionales y loaders
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Instalación
+
+1. Clona el repositorio
+2. Instala dependencias:
+   ```
+   npm install
+   ```
+3. Configura tus credenciales de Firebase en `src/firebase.js`
+4. Inicia la app:
+   ```
+   npm run dev
+   ```
+
+## Uso
+
+- Navega por las categorías y productos
+- Agrega productos al carrito
+- Finaliza la compra y obtén tu código de orden

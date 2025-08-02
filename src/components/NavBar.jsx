@@ -7,7 +7,7 @@ export default function NavBar() {
         <nav className="navbar">
             <h1>
                 <Link to="/" style={{ textDecoration: "none", color: "#4a4a4a" }}>
-                    Ra, el gato de Apoyo Emocional
+                    Michi Libreria
                 </Link>
             </h1>
             <div className="navlinks">

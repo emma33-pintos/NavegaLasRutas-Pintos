@@ -22,6 +22,7 @@ export default function ItemListContainer({ greeting }) {
   }, [id]);
 
   if (loading) return <p>Cargando productos...</p>;
+  if (!items.length) return <p>No hay productos en esta categoría.</p>;
 
   return (
     <section className="bienvenidx">

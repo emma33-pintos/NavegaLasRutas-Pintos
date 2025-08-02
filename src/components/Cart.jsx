@@ -1,9 +1,19 @@
+import React from "react";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { cart } = useCart();
+  const { cart, getTotalPrice, clearCart } = useCart();
 
-  if (cart.length === 0) return <h2>El carrito está vacío</h2>;
+  if (!cart.length)
+    return (
+      <div>
+        <h2>El carrito está vacío</h2>
+        <Link to="/">
+          <button>Ir al catálogo</button>
+        </Link>
+      </div>
+    );
 
   return (
     <div>
@@ -15,6 +25,13 @@ export default function Cart() {
           </li>
         ))}
       </ul>
+      <p>
+        <b>Total:</b> ${getTotalPrice()}
+      </p>
+      <button onClick={clearCart}>Vaciar carrito</button>
+      <Link to="/checkout">
+        <button>Finalizar compra</button>
+      </Link>
     </div>
   );
 }
